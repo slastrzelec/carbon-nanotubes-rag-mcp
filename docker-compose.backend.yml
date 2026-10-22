@@ -1,0 +1,31 @@
+# Runs the existing RAG REST API (separate repo, unchanged) for local development and demos.
+#
+# Needs a local clone of carbon-nanotubes-rag (default ../13_RAG_raman, override with RAG_REPO_PATH)
+# and OPENAI_API_KEY in this repo's .env. The key is passed only to this container, for /query;
+# the MCP server never reads it. Do not paste the output of `docker compose config`: it prints the key.
+#
+# The port is published on 127.0.0.1 only (the RAG repo's own compose file binds all interfaces).
+#
+#   docker compose -f docker-compose.backend.yml up --build
+#   docker compose -f docker-compose.backend.yml down
+
+services:
+  rag-api:
+    build:
+      context: ${RAG_REPO_PATH:-../13_RAG_raman}
+      dockerfile: Dockerfile.api
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:?set OPENAI_API_KEY in .env}
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 2g
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 60s

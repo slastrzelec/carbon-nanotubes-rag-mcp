@@ -1,0 +1,17 @@
+{
+  "_comment": "Synthetic payloads with the exact response shapes of the RAG API (carbon-nanotubes-rag api.py). No paper text is stored in this repository.",
+  "documents": {"count": 3, "documents": ["paper_a.pdf", "paper_b.pdf", "paper_c.pdf"]},
+  "search": {"results": [
+    {"rank": 1, "filename": "paper_a.pdf", "text": "Synthetic passage about the D band.", "score": 0.91},
+    {"rank": 2, "filename": "paper_b.pdf", "text": "Synthetic passage about the G band.", "score": 0.85},
+    {"rank": 3, "filename": "paper_c.pdf", "text": "Synthetic passage about the D band.", "score": 0.80}
+  ]},
+  "query": {
+    "answer": "Synthetic answer citing paper_a.pdf.",
+    "sources": [
+      {"rank": 1, "filename": "paper_a.pdf", "text": "Synthetic passage about the D band.", "score": 0.91}
+    ]
+  },
+  "error_502": {"detail": "Failed to generate an answer: openai.APIConnectionError at /srv/internal/secret_path"},
+  "error_429": {"detail": "Daily query limit for this demo has been reached. Try again tomorrow."}
+}

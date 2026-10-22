@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "carbon-nanotubes-rag-mcp"
+version = "0.1.0"
+description = "Read-only MCP server exposing a carbon-nanotube Raman spectroscopy RAG system, with a LangGraph client agent."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [{ name = "Sławomir Strzelec" }]
+dependencies = [
+    "mcp==2.3.0",
+    "httpx==0.28.1",
+    "pydantic==2.14.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.1.1",
+    "pytest-cov==7.1.0",
+    "hypothesis==6.170.5",
+    "anyio==4.15.1",
+    "ruff==0.17.1",
+    "pip-audit==2.10.1",
+]
+
+[project.scripts]
+rag-mcp = "rag_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rag_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+
+[tool.coverage.run]
+source = ["rag_mcp"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+exclude_also = ["if __name__ == .__main__.:"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "S105", "S106", "S603", "S607"]
+"scripts/**" = ["S603", "S607"]
