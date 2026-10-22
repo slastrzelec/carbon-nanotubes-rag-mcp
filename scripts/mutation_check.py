@@ -95,6 +95,36 @@ MUTANTS = [
         "if False:",
         "weak HTTP token accepted",
     ),
+    (
+        "src/rag_agent/runner.py",
+        'if k in _SYSTEM_VARS or k.startswith("RAG_MCP_")}',
+        "}",
+        "OpenAI key passed to the MCP server process",
+    ),
+    (
+        "src/rag_agent/graph.py",
+        'if state.get("tool_calls_made", 0) >= max_tool_calls:',
+        "if False:",
+        "agent tool-call budget removed",
+    ),
+    (
+        "src/rag_agent/cli.py",
+        'if split == "test" and out.exists():',
+        "if False:",
+        "held-out result can be overwritten",
+    ),
+    (
+        "src/rag_agent/cli.py",
+        'if split_checksum(items, "test") != frozen:',
+        "if False:",
+        "modified test split accepted",
+    ),
+    (
+        "src/rag_agent/evaluation.py",
+        "return (retrieved and _cites(run.answer, run.documents)),",
+        "return retrieved,",
+        "answers without citations scored as correct",
+    ),
 ]
 
 

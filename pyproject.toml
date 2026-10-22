@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "carbon-nanotubes-rag-mcp"
-version = "0.1.0"
+version = "0.2.0"
 description = "Read-only MCP server exposing a carbon-nanotube Raman spectroscopy RAG system, with a LangGraph client agent."
 readme = "README.md"
 license = "MIT"
@@ -26,18 +26,26 @@ dev = [
     "pip-audit==2.10.1",
 ]
 
+agent = [
+    "langgraph==1.2.16",
+    "langchain-core==1.7.0",
+    "langchain-openai==1.7.2",
+    "python-dotenv==1.2.3",
+]
+
 [project.scripts]
 rag-mcp = "rag_mcp.server:main"
+rag-agent = "rag_agent.cli:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/rag_mcp"]
+packages = ["src/rag_mcp", "src/rag_agent"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra --strict-markers"
 
 [tool.coverage.run]
-source = ["rag_mcp"]
+source = ["rag_mcp", "rag_agent"]
 branch = true
 
 [tool.coverage.report]

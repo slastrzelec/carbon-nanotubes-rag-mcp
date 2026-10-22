@@ -6,8 +6,8 @@ Read-only [Model Context Protocol](https://modelcontextprotocol.io) server that 
 [carbon-nanotubes-rag](https://github.com/slastrzelec/carbon-nanotubes-rag) system (hybrid FAISS + BM25
 retrieval over papers on Raman spectroscopy of carbon nanotubes) as MCP tools.
 
-> Status: milestones M2-M3 of [SPEC.md](SPEC.md) — stdio and streamable HTTP transports, Docker image, CI.
-> The LangGraph client agent and the tool-choice evaluation are not built yet.
+> Status: milestones M2-M4 of [SPEC.md](SPEC.md) — stdio and streamable HTTP transports, Docker image, CI,
+> LangGraph client agent and tool-choice evaluation harness. The held-out evaluation has not been run yet.
 
 ## MCP surface
 
@@ -63,6 +63,32 @@ This is a deliberate simplification for local or single-user use, not the MCP OA
 flow. The server binds to 127.0.0.1 by default and keeps the SDK's DNS-rebinding protection (Host and
 Origin allow-lists) enabled.
 
+## Client agent
+
+A LangGraph agent (explicit `StateGraph`: model node, tool node, hard limit of 6 tool calls per question)
+that connects to the server over MCP and answers with document citations. It uses a small in-repo
+MCP-to-LangChain adapter because `langchain-mcp-adapters` does not yet support `mcp` 2.x.
+
+```powershell
+cd "C:\Users\slast\PYTHON\0_projekty do portfolio\carbon-nanotubes-rag-mcp"
+pip install -e ".[agent]"
+# OPENAI_API_KEY in .env; RAG API running (docker-compose.backend.yml)
+rag-agent ask "How is the RBM frequency related to nanotube diameter?"
+```
+
+The agent launches the MCP server over stdio with an environment allow-list, so the OpenAI key stays in
+the agent process and never reaches the server.
+
+## Results
+
+Tool-choice evaluation (SPEC section 5): 40 hand-written questions in 5 categories (inventory, evidence,
+answer, out of corpus, injection), split 15 dev / 25 held-out before any run, the held-out split frozen by
+a SHA-256 checksum. Each question runs 3 times with `gpt-4o-mini` at temperature 0 and passes on a 2-of-3
+majority; results are reported with Wilson 95% intervals.
+
+**Held-out results: not run yet.** Run with `rag-agent eval --split test`; the report is written to
+`eval/results/test-<version>.json` and is never overwritten for the same version.
+
 ## Security
 
 - The server holds no LLM key; the backend URL is fixed at start-up and checked against a host
@@ -90,7 +116,14 @@ Origin allow-lists) enabled.
   even with a valid token; an authorised client runs a full MCP session; the token never appears in logs.
 - CLI: refuses to start with an unsafe configuration (missing or short token, foreign backend host) with
   a one-line error and no traceback.
-- Mutation check (`scripts/mutation_check.py`, 13 mutants): re-introducing known bugs must fail the suite.
+- Client agent (scripted fake model, real server in memory): the adapter exposes the server's exact
+  schemas, returns structured results and error messages; the graph searches and cites returned documents,
+  stops a looping model at the tool-call budget, survives backend failures; injected passage text reaches
+  the model only inside a fenced tool message; the server process never receives the OpenAI key.
+- Evaluation harness: question-set shape and frozen held-out checksum, every scoring rule, Wilson interval
+  (known values and a property test), majority and consistency, an end-to-end dev run, refusal to overwrite
+  a held-out result or to run with a modified test split.
+- Mutation check (`scripts/mutation_check.py`, 18 mutants): re-introducing known bugs must fail the suite.
 - Repo hygiene: no `.env`, keys or corpus data tracked; the server package never reads an LLM key.
 
 **CI (GitHub Actions):** ruff, pytest with a 90% coverage gate on Python 3.11-3.13 (Linux) and 3.12
@@ -99,7 +132,8 @@ image and checks that the container refuses to start without a token, answers 40
 non-root user and does not log the token. Dependabot watches pip, GitHub Actions and the base image.
 
 **Not covered:** the real RAG backend (mocked at HTTP level), answer quality (belongs to the RAG project's
-RAGAs evaluation), load and concurrency, budgets across several server processes, the MCP OAuth flow.
+RAGAs evaluation), load and concurrency, budgets across several server processes, the MCP OAuth flow,
+the agent's behaviour with a real model (measured separately by the evaluation, not asserted in CI).
 
 ## License
 
