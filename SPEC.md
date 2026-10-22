@@ -1,6 +1,6 @@
 # SPEC: carbon-nanotubes-rag-mcp — MCP server for the Carbon Nanotubes RAG + LangGraph client agent
 
-Status: v0.2 APPROVED (2026-10-22). D5 accepted (option a) and merged in the RAG repo. M2, M3 and M4 (code, tests, evaluation harness) implemented; held-out evaluation not run yet.
+Status: v0.2 APPROVED (2026-10-22). D5 accepted (option a) and merged in the RAG repo. M2-M4 implemented. Held-out evaluation run once (v0.2.0, commit c293eb1): 23/25, Wilson 95% 0.75-0.98; see README Results.
 Changes from v0.1: backend contract verified against `carbon-nanotubes-rag@f9b04be` (section 10); decisions D1-D4 accepted; new decision D5 (retrieval-only endpoint); error mapping, rate-budget alignment, deduplication and evaluation-leakage rules added.
 
 ## 1. Goal

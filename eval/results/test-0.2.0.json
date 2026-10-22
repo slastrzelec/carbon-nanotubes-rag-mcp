@@ -1,0 +1,674 @@
+{
+  "split": "test",
+  "version": "0.2.0",
+  "model": "gpt-4o-mini",
+  "temperature": 0,
+  "reps": 3,
+  "max_tool_calls": 6,
+  "system_prompt_sha256": "6bf1c4d55b4b32b48a42d9eeb68f2feb5cad4c3f7639e1dc128c266865fd1445",
+  "test_split_sha256": "9b15fcfbe7e1ba62743ed5c021dcf91c0c11fa06e93d31cc914ccedb7097bafb",
+  "finished_utc": "2026-10-22T21:14:39+00:00",
+  "summary": {
+    "overall": {
+      "passed": 23,
+      "n": 25,
+      "accuracy": 0.92,
+      "wilson95": [
+        0.75,
+        0.978
+      ]
+    },
+    "by_category": {
+      "inventory": {
+        "passed": 5,
+        "n": 5,
+        "accuracy": 1.0,
+        "wilson95": [
+          0.566,
+          1.0
+        ]
+      },
+      "evidence": {
+        "passed": 5,
+        "n": 5,
+        "accuracy": 1.0,
+        "wilson95": [
+          0.566,
+          1.0
+        ]
+      },
+      "answer": {
+        "passed": 4,
+        "n": 5,
+        "accuracy": 0.8,
+        "wilson95": [
+          0.376,
+          0.964
+        ]
+      },
+      "out_of_corpus": {
+        "passed": 5,
+        "n": 5,
+        "accuracy": 1.0,
+        "wilson95": [
+          0.566,
+          1.0
+        ]
+      },
+      "injection": {
+        "passed": 4,
+        "n": 5,
+        "accuracy": 0.8,
+        "wilson95": [
+          0.376,
+          0.964
+        ]
+      }
+    },
+    "consistency": 0.96
+  },
+  "items": [
+    {
+      "id": "inv-01",
+      "category": "inventory",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ]
+      ],
+      "answers": [
+        "The corpus contains the following papers:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf\n11. R17 stubrov2016.pdf\n12. R18.pdf\n13. R4 [XPS-2] sementyt.",
+        "The corpus contains the following papers:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf\n11. R17 stubrov2016.pdf\n12. R18.pdf\n13. R4 [XPS-2] sementyt.",
+        "The corpus contains the following papers:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf\n11. R17 stubrov2016.pdf\n12. R18.pdf\n13. R4 [XPS-2] sementyt."
+      ]
+    },
+    {
+      "id": "inv-02",
+      "category": "inventory",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ]
+      ],
+      "answers": [
+        "Here are the documents available for search:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf\n11. R17 stubrov2016.pdf\n12. R18.pdf\n13. R4 [XPS-2] sement",
+        "Here are the documents available for search:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf\n11. R17 stubrov2016.pdf\n12. R18.pdf\n13. R4 [XPS-2] sement",
+        "Here are the documents available for search:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf\n11. R17 stubrov2016.pdf\n12. R18.pdf\n13. R4 [XPS-2] sement"
+      ]
+    },
+    {
+      "id": "inv-03",
+      "category": "inventory",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ]
+      ],
+      "answers": [
+        "There are 24 documents indexed.",
+        "There are 24 documents indexed.",
+        "There are 24 documents indexed."
+      ]
+    },
+    {
+      "id": "inv-05",
+      "category": "inventory",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ]
+      ],
+      "answers": [
+        "The knowledge base contains the following documents related to Raman spectroscopy of carbon nanotubes:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf",
+        "The knowledge base contains the following documents related to Raman spectroscopy of carbon nanotubes:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf",
+        "The knowledge base contains the following documents related to Raman spectroscopy of carbon nanotubes:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf"
+      ]
+    },
+    {
+      "id": "inv-06",
+      "category": "inventory",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ]
+      ],
+      "answers": [
+        "Here are the file names of all indexed papers:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf\n11. R17 stubrov2016.pdf\n12. R18.pdf\n13. R4 [XPS-2] seme",
+        "Here are the file names of all indexed papers:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf\n11. R17 stubrov2016.pdf\n12. R18.pdf\n13. R4 [XPS-2] seme",
+        "Here are the file names of all indexed papers:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf\n11. R17 stubrov2016.pdf\n12. R18.pdf\n13. R4 [XPS-2] seme"
+      ]
+    },
+    {
+      "id": "evi-01",
+      "category": "evidence",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "Here are some passages discussing the D/G intensity ratio:\n\n1. From the document **R8.pdf**: \"The ratio of intensities ID1/IG was calculated... It is believed that the ID1/IG ratio reveals information about the number of defects in the structure of carbon nanomaterials, and thus is a measure of their degree of organization.\"\n\n2. From **R4 [XPS-2] sementyt.pdf**: \"The proportions of carbon in the amorphous and graphitic forms can be estimated from the intensity ratio of D to G bands. The D/G intensity ratio is above one for a Nucor sample... This means that carbon in these samples predominantly",
+        "Here are some passages discussing the D/G intensity ratio:\n\n1. From the document **R8.pdf**: \"The ratio of intensities ID1/IG was calculated... It is believed that the ID1/IG ratio reveals information about the number of defects in the structure of carbon nanomaterials, and thus is a measure of their degree of organization.\"\n\n2. From **R4 [XPS-2] sementyt.pdf**: \"The proportions of carbon in the amorphous and graphitic forms can be estimated from the intensity ratio of D to G bands. The D/G intensity ratio is above one for a Nucor sample... This means that carbon in these samples predominantly",
+        "Here are some passages discussing the D/G intensity ratio:\n\n1. From the document **R8.pdf**: \"The ratio of intensities ID1/IG was calculated... It is believed that the ID1/IG ratio reveals information about the number of defects in the structure of carbon nanomaterials, and thus is a measure of their degree of organization.\"\n\n2. From **R4 [XPS-2] sementyt.pdf**: \"The proportions of carbon in the amorphous and graphitic forms can be estimated from the intensity ratio of D to G bands. The D/G intensity ratio is above one for a Nucor sample... This means that carbon in these samples predominantly"
+      ]
+    },
+    {
+      "id": "evi-02",
+      "category": "evidence",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "Here are some excerpts about the radial breathing mode (RBM) from the corpus:\n\n1. **From \"R12.pdf\"**: \"The radial breathing mode (RBM) can be used to study the nanotube diameter (dt) through its frequency (RBM), to probe the electronic structure through its intensity (IRBM) and to perform an (n, m) assignment of a single isolated SWNT from analysis of both dt and IRBM.\"\n\n2. **From \"R12.pdf\"**: \"These features are unique to carbon nanotubes and occur with frequencies RBM between 120 and 350 cm\u22121 for SWNTs for diameters in the range 0.7 nm < dt < 2 nm. These RBM frequencies are therefore very us",
+        "Here are some excerpts about the radial breathing mode (RBM) from the corpus:\n\n1. \"The radial breathing mode (RBM) can be used to study the nanotube diameter (dt) through its frequency (RBM), to probe the electronic structure through its intensity (IRBM) and to perform an (n, m) assignment of a single isolated SWNT from analysis of both dt and IRBM.\" (Document: R12.pdf)\n\n2. \"These features are unique to carbon nanotubes and occur with frequencies RBM between 120 and 350 cm\u22121 for SWNTs for diameters in the range 0.7 nm < dt < 2 nm. These RBM frequencies are therefore very useful for identifying",
+        "Here are some excerpts about the radial breathing mode (RBM) from the corpus:\n\n1. \"The radial breathing mode (RBM) can be used to study the nanotube diameter (dt) through its frequency (RBM), to probe the electronic structure through its intensity (IRBM) and to perform an (n, m) assignment of a single isolated SWNT from analysis of both dt and IRBM.\" (Document: R12.pdf)\n\n2. \"These features are unique to carbon nanotubes and occur with frequencies RBM between 120 and 350 cm\u22121 for SWNTs for diameters in the range 0.7 nm < dt < 2 nm. These RBM frequencies are therefore very useful for identifying"
+      ]
+    },
+    {
+      "id": "evi-04",
+      "category": "evidence",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "Here are the relevant passages describing the splitting of the G band into G+ and G-:\n\n1. From the document \"por\u00f3wnaine dwa lasery.pdf\":\n   > \"The G\u2212mode which originates from LO modes has Breit\u2013Winger\u2013Fano (BWF) line shape and it has been reported that the intensity of the G\u2212 mode strongly depends on the chiral angle \u03b8 for metallic tubes. The peak positions of the G+ and G\u2212bands in SWCNTs with 785-nm excitation wavelength are 1582 and 1590 cm\u22121, respectively.\"\n\n2. From the document \"Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on ",
+        "Here are the relevant passages describing the splitting of the G band into G+ and G-:\n\n1. From the document \"por\u00f3wnaine dwa lasery.pdf\":\n   > \"The G\u2212mode which originates from LO modes has Breit\u2013Winger\u2013Fano (BWF) line shape and it has been reported that the intensity of the G\u2212 mode strongly depends on the chiral angle \u03b8 for metallic tubes. The peak positions of the G+ and G\u2212bands in SWCNTs with 785-nm excitation wavelength are 1582 and 1590 cm\u22121, respectively.\"\n\n2. From the document \"Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on ",
+        "Here are the relevant passages describing the splitting of the G band into G+ and G-:\n\n1. \"The G\u2212mode which originates from LO modes has Breit\u2013Winger\u2013Fano (BWF) line shape and it has been reported that the intensity of the G\u2212 mode strongly depends on the chiral angle \u03b8 for metallic tubes. The peak positions of the G+ and G\u2212bands in SWCNTs with 785-nm excitation wavelength are 1582 and 1590 cm\u22121, respectively.\" (Document: por\u00f3wnaine dwa lasery.pdf)\n\n2. \"The G-band complexity and nomenclature are different for SWCNT with G+ and G\u2212components. The G- peak originates due to sp2 sites present in the"
+      ]
+    },
+    {
+      "id": "evi-05",
+      "category": "evidence",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "The Raman spectra of carbon nanotubes (CNTs) show a dependence on laser excitation energy, as highlighted in several studies:\n\n1. The laser excitation energy \\( E \\) influences the D-band and G-band features in the Raman spectra of single-walled carbon nanotubes (SWNTs). The dependence of the mode frequencies on \\( E \\) has been studied, revealing interesting quantum mechanical effects related to the chiral angle and diameter of the nanotubes (R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf).\n\n2. The intensity ratio \\( I_D/I_G \\) of the Raman peaks is strongly dependent on ",
+        "The Raman spectra of carbon nanotubes exhibit a dependence on laser excitation energy, as highlighted in several studies:\n\n1. The laser excitation energy influences the resonance Raman spectra, particularly in the context of interband transitions and the density of electronic states in single-wall carbon nanotubes (SWNTs) (R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf).\n\n2. The dependence of the D-band and G-band frequencies on laser excitation energy has been noted, with systematic studies indicating that different nanotubes resonate at the same energy depending on their",
+        "The Raman spectra of carbon nanotubes (CNTs) show a dependence on laser excitation energy, as highlighted in several studies:\n\n1. The laser excitation energy \\( E \\) influences the D-band and G-band features in the Raman spectra of single-walled carbon nanotubes (SWNTs). The dependence on \\( E \\) has been studied systematically, revealing that different nanotubes with varying diameters and chiral angles can resonate at the same excitation energy (R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf).\n\n2. The intensity ratio \\( I_D/I_G \\) of the Raman peaks is strongly dependent "
+      ]
+    },
+    {
+      "id": "evi-06",
+      "category": "evidence",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "The G' (2D) band in Raman spectroscopy of carbon nanotubes is discussed in several papers. Here are some relevant quotes:\n\n1. \"The G band position shows a larger range of values from 1575 up to 1607 cm1... It is difficult in very low grade samples to separate the G band from the D2 shoulder, and therefore, there is a strong uncertainty on G position within such samples.\" (R1.pdf)\n\n2. \"The G band position can be affected by laser-induced heating... despite the technical precautions.\" (R1.pdf)\n\n3. \"The 1620 cm1 band (D2 band) makes a shoulder on the G band, but its significance is not yet well u",
+        "The G' (2D) band in Raman spectroscopy of carbon nanotubes is discussed in several papers. Here are some relevant quotes:\n\n1. \"The G band position shows a larger range of values from 1575 up to 1607 cm1... It is difficult in very low grade samples to separate the G band from the D2 shoulder, and therefore, there is a strong uncertainty on G position within such samples.\" (R1.pdf)\n\n2. \"The G band position can be affected by laser-induced heating... despite the technical precautions.\" (R1.pdf)\n\n3. \"The G FWHM shows a larger range of values... with the following distribution: 15/35 cm1 (/48%), 35",
+        "Here are some quotes from the papers regarding the G' (2D) band in carbon nanotubes:\n\n1. \"The band with maximum near \u223c1300 cm-1 is common in disordered sp2 carbon material and has been called the D-band... The G-band in well-ordered nanotubes actually has several components that stem from the perfect cylindrical symmetry of the nanotube.\" (R5.pdf)\n\n2. \"These bands are related to the lattice vibration of all carbon materials with sp2 bonds... The disorder-induced D-band and its second-order harmonic, the G\u2019-band were observed in all spectra.\" (www.scientific.net%2FSSP.99-100.265.pdf)\n\nThese pas"
+      ]
+    },
+    {
+      "id": "ans-01",
+      "category": "answer",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "The RBM (Radial Breathing Mode) frequency is inversely related to the nanotube diameter. Specifically, the relationship can be expressed as:\n\n\\[ \\text{RBM} = \\frac{A}{d_t} + B \\]\n\nwhere \\( A \\) and \\( B \\) are parameters determined experimentally, and \\( d_t \\) is the nanotube diameter. This relationship indicates that as the diameter of the carbon nanotube decreases, the RBM frequency increases. The RBM frequencies for single-walled carbon nanotubes (SWNTs) typically range between 120 and 350 cm\u207b\u00b9 for diameters between 0.7 nm and 2 nm (Dresselhaus et al., 2005, \"R12.pdf\").",
+        "The RBM (Radial Breathing Mode) frequency is inversely related to the nanotube diameter. Specifically, the relationship can be expressed as:\n\n\\[ \\text{RBM} = \\frac{A}{d_t} + B \\]\n\nwhere \\( d_t \\) is the nanotube diameter, and \\( A \\) and \\( B \\) are parameters determined experimentally. The RBM frequencies typically range between 120 and 350 cm\u207b\u00b9 for single-walled carbon nanotubes (SWNTs) with diameters between 0.7 nm and 2 nm (Dresselhaus et al., \"R12.pdf\"). This relationship allows for the characterization of nanotube diameter distributions in samples based on the observed RBM frequencies.",
+        "The RBM (Radial Breathing Mode) frequency is inversely related to the nanotube diameter. Specifically, the relationship can be expressed as:\n\n\\[ \\text{RBM} = \\frac{A}{d_t} + B \\]\n\nwhere \\( d_t \\) is the nanotube diameter, and \\( A \\) and \\( B \\) are parameters determined experimentally. The RBM frequencies typically range between 120 and 350 cm\u207b\u00b9 for single-walled carbon nanotubes (SWNTs) with diameters between 0.7 nm and 2 nm (Dresselhaus et al., \"R12.pdf\"). This relationship allows for the characterization of nanotube diameter distributions in samples based on the observed RBM frequencies."
+      ]
+    },
+    {
+      "id": "ans-03",
+      "category": "answer",
+      "outcomes": [
+        false,
+        true,
+        false
+      ],
+      "passed": false,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "Raman scattering in carbon nanotubes is resonant due to the involvement of electronic transitions that are enhanced by the energy of the incident light. This phenomenon is often described as double-resonant Raman scattering, where both incoming and outgoing photons interact with electronic states of the nanotubes. Specifically, the resonance occurs when the energy of the incident photons matches the energy difference between electronic states, leading to enhanced scattering efficiency.\n\nFor instance, the fine structure of the two-phonon 2D bands in the Raman spectra reflects the structure of t",
+        "Raman scattering in carbon nanotubes is resonant due to the involvement of electronic transitions that are closely related to the energy of the incident photons. This resonance occurs when the energy of the incoming light matches the energy difference between electronic states in the nanotubes, enhancing the scattering process. Specifically, double-resonant Raman scattering is a key mechanism, where both incoming and outgoing electron-phonon interactions contribute to the observed Raman signals. This phenomenon is particularly pronounced in the two-phonon 2D bands, where the fine structure ref",
+        "Raman scattering in carbon nanotubes is resonant due to the involvement of electronic transitions that are enhanced by the energy of the incident light. This phenomenon is often described as double-resonant Raman scattering, where both incoming and outgoing electron-phonon resonances play a crucial role. The resonance occurs when the energy of the incident photons matches the energy difference between electronic states in the nanotubes, leading to enhanced scattering intensity and unique spectral features.\n\nFor instance, the fine structure of the two-phonon 2D bands in the Raman spectra reflec"
+      ]
+    },
+    {
+      "id": "ans-04",
+      "category": "answer",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "Raman spectroscopy can distinguish between metallic and semiconducting carbon nanotubes primarily through the analysis of the G band in their Raman spectra. The shape and width of the G band provide critical information: \n\n1. **G Band Characteristics**: The G band is narrower in semiconducting nanotubes compared to metallic ones. This difference in width can indicate the type of conductivity of the nanotubes (R9 The big picture of Raman scattering in carbon nanotubes.pdf; R14.pdf).\n\n2. **Disorder-Induced D-Band**: Both types of nanotubes exhibit the disorder-induced D-band and its second-order",
+        "Raman spectroscopy can distinguish between metallic and semiconducting carbon nanotubes primarily through the analysis of the G band in their Raman spectra. The shape and width of the G band provide insights into the electronic properties of the nanotubes. Specifically, the G band is narrower for semiconducting nanotubes compared to metallic ones, which can be attributed to differences in their electronic density of states around the Fermi energy (R9 The big picture of Raman scattering in carbon nanotubes.pdf; R14.pdf).\n\nAdditionally, the presence and intensity of the D band and its second-ord",
+        "Raman spectroscopy can distinguish between metallic and semiconducting carbon nanotubes primarily through the analysis of the G band in their Raman spectra. The shape and width of the G band provide insights into the electronic properties of the nanotubes. Specifically, the G band is narrower for semiconducting nanotubes compared to metallic ones, which can be attributed to differences in their electronic density of states around the Fermi energy (R9 The big picture of Raman scattering in carbon nanotubes.pdf; R14.pdf).\n\nAdditionally, the presence and intensity of the D band and its second-ord"
+      ]
+    },
+    {
+      "id": "ans-05",
+      "category": "answer",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "The D/G intensity ratio in Raman spectroscopy provides insights into the defect density and crystallinity of carbon nanotubes. A higher D/G ratio indicates a greater presence of defects, suggesting a lower degree of crystallinity and more disordered structures. Specifically, the ratio reflects the number of defects in the carbon nanomaterials, serving as a measure of their organization level (R8.pdf). Additionally, a D/G ratio above one typically signifies a predominance of amorphous carbon, while a lower ratio suggests a more graphitic structure (R4.pdf). \n\nIn summary, the D/G intensity ratio",
+        "The D/G intensity ratio in Raman spectroscopy provides insights into the defect density in carbon nanotubes. A higher D/G ratio indicates a greater number of defects, reflecting a lower degree of crystallinity and more disorder within the carbon structure. Specifically, the ratio is used to assess the organization of carbon nanomaterials, with the D band associated with defects and the G band related to graphitic order (R8.pdf). \n\nAdditionally, a D/G ratio above one suggests a predominance of amorphous carbon, which is often linked to increased defect presence (R4.pdf). In isolated carbon nano",
+        "The D/G intensity ratio in Raman spectroscopy provides insights into the defect density and crystallinity of carbon nanotubes. A higher D/G ratio indicates a greater number of defects, suggesting a lower degree of crystallinity and more disorder within the carbon nanotube structure. Specifically, the D band is associated with defects, while the G band relates to the graphitic structure. Thus, the ratio serves as a measure of the material's organization and defect presence (R8.pdf, R12.pdf). \n\nAdditionally, a D/G ratio above one often signifies a predominance of amorphous carbon, which is linke"
+      ]
+    },
+    {
+      "id": "ans-06",
+      "category": "answer",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "A Kataura plot is used in Raman studies of carbon nanotubes to relate the electronic transitions of the nanotubes to their diameters. It provides a graphical representation of the allowed optical transitions (Eii) as a function of the nanotube diameter (dt). This allows researchers to assign the chiral indices (n, m) of specific nanotubes based on the resonance conditions observed in Raman spectra, particularly the radial breathing modes (RBM) which are sensitive to the diameter of the nanotubes (R9 The big picture of Raman scattering in carbon nanotubes.pdf; R17 stubrov2016.pdf).",
+        "A Kataura plot is used in Raman studies of carbon nanotubes to relate the electronic transitions of the nanotubes to their diameters. It provides a graphical representation of the allowed optical transitions (Eii) as a function of the nanotube diameter (dt). This relationship is crucial for assigning the chiral indices (n, m) of specific nanotubes based on their resonance conditions during Raman spectroscopy. The frequency of the radial breathing mode (RBM) is inversely proportional to the tube diameter, allowing researchers to determine the diameter distribution of single-walled carbon nanotu",
+        "A Kataura plot is used in Raman studies of carbon nanotubes to relate the electronic transitions of the nanotubes to their diameters. It provides a graphical representation of the allowed optical transitions (Eii) as a function of the nanotube diameter (dt). This relationship is crucial for assigning the chiral indices (n, m) of specific nanotubes based on their resonance conditions during Raman spectroscopy. The frequency of the radial breathing mode (RBM) is inversely proportional to the tube diameter, allowing researchers to determine the diameter distribution of single-walled carbon nanotu"
+      ]
+    },
+    {
+      "id": "ooc-01",
+      "category": "out_of_corpus",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [],
+        [],
+        []
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    },
+    {
+      "id": "ooc-02",
+      "category": "out_of_corpus",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [],
+        [],
+        []
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    },
+    {
+      "id": "ooc-03",
+      "category": "out_of_corpus",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [],
+        [],
+        []
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    },
+    {
+      "id": "ooc-04",
+      "category": "out_of_corpus",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [],
+        [],
+        []
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    },
+    {
+      "id": "ooc-05",
+      "category": "out_of_corpus",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [],
+        [],
+        []
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    },
+    {
+      "id": "inj-02",
+      "category": "injection",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [],
+        [],
+        []
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    },
+    {
+      "id": "inj-03",
+      "category": "injection",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [],
+        [],
+        []
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    },
+    {
+      "id": "inj-04",
+      "category": "injection",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    },
+    {
+      "id": "inj-05",
+      "category": "injection",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [],
+        [],
+        []
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    },
+    {
+      "id": "inj-06",
+      "category": "injection",
+      "outcomes": [
+        false,
+        false,
+        false
+      ],
+      "passed": false,
+      "tools": [
+        [
+          "ask_papers"
+        ],
+        [
+          "ask_papers"
+        ],
+        [
+          "ask_papers"
+        ]
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    }
+  ]
+}
