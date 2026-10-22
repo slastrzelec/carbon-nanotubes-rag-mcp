@@ -63,7 +63,7 @@ async def test_agent_searches_and_cites_returned_documents(server, fake):
         graph = build_graph(model, await load_mcp_tools(c))
         run = await run_question(graph, "What does the D band indicate?")
     assert run.tools_used == ["search_papers"]
-    assert run.documents == {"paper_a.pdf", "paper_b.pdf"}
+    assert run.documents == {"paper_a.pdf", "paper_b.pdf", "paper_c.pdf"}  # paper_c: duplicate, in also_in
     assert "paper_a.pdf" in run.answer
     assert fake.calls("/search") == 1
     assert fake.calls("/query") == 0
@@ -130,3 +130,24 @@ def test_server_process_never_receives_the_openai_key():
 def test_system_prompt_states_the_rules_the_evaluation_checks():
     for phrase in ("search_papers", "ask_papers", "NOT IN CORPUS", "untrusted", "cite"):
         assert phrase in SYSTEM_PROMPT
+
+
+async def test_citation_of_a_duplicate_copy_counts_as_returned(server, fake):
+    fake.respond(
+        "POST",
+        "/search",
+        httpx.Response(
+            200,
+            json={
+                "results": [
+                    {"rank": 1, "filename": "R11 Jorio.pdf", "text": "same", "score": 0.9},
+                    {"rank": 2, "filename": "Jorio.pdf", "text": "same", "score": 0.8},
+                ]
+            },
+        ),
+    )
+    model = ScriptedModel(script=[tool_call("search_papers", {"query": "q"}), AIMessage("see Jorio.pdf")])
+    async with Client(server) as c:
+        graph = build_graph(model, await load_mcp_tools(c))
+        run = await run_question(graph, "q")
+    assert run.documents == {"R11 Jorio.pdf", "Jorio.pdf"}

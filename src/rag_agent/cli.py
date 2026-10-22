@@ -11,8 +11,10 @@ server is launched with an environment allow-list that excludes it.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
+import socket
 import sys
 from contextlib import asynccontextmanager
 from datetime import UTC, datetime
@@ -24,6 +26,7 @@ from mcp import Client
 from rag_agent.evaluation import evaluate, load_items, split_checksum, summarise
 from rag_agent.graph import DEFAULT_MAX_TOOL_CALLS, build_graph
 from rag_agent.mcp_tools import load_mcp_tools
+from rag_agent.prompts import SYSTEM_PROMPT
 from rag_agent.runner import run_question, stdio_server
 from rag_mcp import __version__
 
@@ -81,7 +84,13 @@ async def _eval(split: str, reps: int, pace_s: float, model, root: Path = EVAL_D
         await anyio.sleep(pace_s)
 
     async with agent_session(model, server) as graph:
-        results = await evaluate(chosen, lambda q: run_question(graph, q), reps=reps, pause=pause)
+        results = await evaluate(
+            chosen,
+            lambda q: run_question(graph, q),
+            reps=reps,
+            pause=pause,
+            progress=lambda line: print(line, file=sys.stderr, flush=True),
+        )
     report = {
         "split": split,
         "version": __version__,
@@ -89,11 +98,19 @@ async def _eval(split: str, reps: int, pace_s: float, model, root: Path = EVAL_D
         "temperature": 0,
         "reps": reps,
         "max_tool_calls": DEFAULT_MAX_TOOL_CALLS,
+        "system_prompt_sha256": hashlib.sha256(SYSTEM_PROMPT.encode()).hexdigest(),
         "test_split_sha256": frozen,
         "finished_utc": datetime.now(UTC).isoformat(timespec="seconds"),
         "summary": summarise(results),
         "items": [
-            {"id": r.id, "category": r.category, "outcomes": r.outcomes, "passed": r.passed, "tools": r.tools}
+            {
+                "id": r.id,
+                "category": r.category,
+                "outcomes": r.outcomes,
+                "passed": r.passed,
+                "tools": r.tools,
+                "answers": r.answers,
+            }
             for r in results
         ],
     }
@@ -119,9 +136,47 @@ def main(argv: list[str] | None = None, model_factory=None) -> int:
         _require_key()
         model_factory = make_model
     model = model_factory()
-    if args.command == "ask":
-        return anyio.run(_ask, args.question, model)
-    return anyio.run(_eval, args.split, args.reps, args.pace, model)
+    try:
+        if args.command == "ask":
+            return anyio.run(_ask, args.question, model)
+        return anyio.run(_eval, args.split, args.reps, args.pace, model)
+    except SystemExit:
+        raise
+    except BaseException as exc:  # one readable line instead of a nested exception-group traceback
+        sys.exit(f"rag-agent: {describe_error(exc)}")
+
+
+NETWORK_ERROR = (
+    "network error (cannot reach the model API or the RAG backend); check the connection and retry"
+)
+
+
+def describe_error(exc: BaseException) -> str:
+    """One readable line for an error that may be wrapped in exception groups and cause chains."""
+    errors = list(_walk(exc))
+    if any(_is_network_error(e) for e in errors):
+        return NETWORK_ERROR
+    leaves = [e for e in errors if not isinstance(e, BaseExceptionGroup)]
+    leaf = leaves[-1] if leaves else exc
+    return f"{type(leaf).__name__}: {leaf}"
+
+
+def _walk(exc: BaseException):
+    stack, seen = [exc], set()
+    while stack:
+        current = stack.pop()
+        if id(current) in seen:
+            continue
+        seen.add(id(current))
+        yield current
+        if isinstance(current, BaseExceptionGroup):
+            stack.extend(current.exceptions)
+        if current.__cause__ is not None:
+            stack.append(current.__cause__)
+
+
+def _is_network_error(exc: BaseException) -> bool:
+    return isinstance(exc, ConnectionError | socket.gaierror) or "Connect" in type(exc).__name__
 
 
 if __name__ == "__main__":  # pragma: no cover

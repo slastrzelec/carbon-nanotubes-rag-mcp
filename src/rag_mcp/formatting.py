@@ -30,22 +30,27 @@ def neutralize(text: str) -> str:
 
 
 def dedupe(raw: Iterable[RawPassage]) -> tuple[list[Passage], int]:
-    """Drops passages whose text exactly matches a higher-ranked one; renumbers ranks."""
-    seen: set[str] = set()
+    """Drops passages whose text exactly matches a higher-ranked one and renumbers ranks.
+    Provenance is kept: the kept passage lists the other documents in `also_in`."""
+    seen: dict[str, Passage] = {}
     kept: list[Passage] = []
     dropped = 0
     for item in sorted(raw, key=lambda p: p.rank):
         key = item.text.strip()
         if key in seen:
             dropped += 1
+            first = seen[key]
+            if item.filename != first.document and item.filename not in first.also_in:
+                first.also_in.append(item.filename)
             continue
-        seen.add(key)
         text = (
             item.text
             if len(item.text) <= MAX_PASSAGE_CHARS
             else item.text[:MAX_PASSAGE_CHARS] + " [truncated]"
         )
-        kept.append(Passage(rank=len(kept) + 1, document=item.filename, score=item.score, text=text))
+        passage = Passage(rank=len(kept) + 1, document=item.filename, score=item.score, text=text)
+        seen[key] = passage
+        kept.append(passage)
     return kept, dropped
 
 
@@ -58,7 +63,10 @@ def render_passages(passages: list[Passage], dropped: int) -> str:
     if not passages:
         lines.append("No passages found.")
     for p in passages:
-        lines.append(fence(f"rank={p.rank} document={neutralize(p.document)!r} score={p.score:.4f}", p.text))
+        label = f"rank={p.rank} document={neutralize(p.document)!r} score={p.score:.4f}"
+        if p.also_in:
+            label += " also_in=" + repr([neutralize(d) for d in p.also_in])
+        lines.append(fence(label, p.text))
     if dropped:
         lines.append(f"({dropped} duplicate passage(s) removed.)")
     return "\n".join(lines)

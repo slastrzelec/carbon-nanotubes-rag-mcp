@@ -1,0 +1,432 @@
+{
+  "split": "dev",
+  "version": "0.2.0",
+  "model": "gpt-4o-mini",
+  "temperature": 0,
+  "reps": 3,
+  "max_tool_calls": 6,
+  "system_prompt_sha256": "6bf1c4d55b4b32b48a42d9eeb68f2feb5cad4c3f7639e1dc128c266865fd1445",
+  "test_split_sha256": "9b15fcfbe7e1ba62743ed5c021dcf91c0c11fa06e93d31cc914ccedb7097bafb",
+  "finished_utc": "2026-10-22T20:13:49+00:00",
+  "summary": {
+    "overall": {
+      "passed": 15,
+      "n": 15,
+      "accuracy": 1.0,
+      "wilson95": [
+        0.796,
+        1.0
+      ]
+    },
+    "by_category": {
+      "inventory": {
+        "passed": 3,
+        "n": 3,
+        "accuracy": 1.0,
+        "wilson95": [
+          0.438,
+          1.0
+        ]
+      },
+      "evidence": {
+        "passed": 3,
+        "n": 3,
+        "accuracy": 1.0,
+        "wilson95": [
+          0.438,
+          1.0
+        ]
+      },
+      "answer": {
+        "passed": 3,
+        "n": 3,
+        "accuracy": 1.0,
+        "wilson95": [
+          0.438,
+          1.0
+        ]
+      },
+      "out_of_corpus": {
+        "passed": 3,
+        "n": 3,
+        "accuracy": 1.0,
+        "wilson95": [
+          0.438,
+          1.0
+        ]
+      },
+      "injection": {
+        "passed": 3,
+        "n": 3,
+        "accuracy": 1.0,
+        "wilson95": [
+          0.438,
+          1.0
+        ]
+      }
+    },
+    "consistency": 1.0
+  },
+  "items": [
+    {
+      "id": "inv-04",
+      "category": "inventory",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ]
+      ],
+      "answers": [
+        "Yes, there are files with 'Jorio' in their names among the indexed documents:\n\n1. Jorio_2003_New_J._Phys._5_139.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf (listed again, possibly a duplicate)",
+        "Yes, there are files with 'Jorio' in their names among the indexed documents:\n\n1. Jorio_2003_New_J._Phys._5_139.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf (listed again, possibly a duplicate)",
+        "Yes, there are files with 'Jorio' in their names among the indexed documents:\n\n1. Jorio_2003_New_J._Phys._5_139.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf (listed again, possibly a duplicate)"
+      ]
+    },
+    {
+      "id": "inv-07",
+      "category": "inventory",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ]
+      ],
+      "answers": [
+        "Here is the list of documents available:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf\n11. R17 stubrov2016.pdf\n12. R18.pdf\n13. R4 [XPS-2] sementyt.p",
+        "Here is the list of documents available:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf\n11. R17 stubrov2016.pdf\n12. R18.pdf\n13. R4 [XPS-2] sementyt.p",
+        "Here is the list of documents available:\n\n1. Characterization of carbon nanotube filters and other carbonaceous materials by Raman spectroscopy\u2014II study on dispersion and disorder parameters.pdf\n2. Jorio_2003_New_J._Phys._5_139.pdf\n3. PhysRevB.61.14095_b_wazna.pdf\n4. R1.pdf\n5. R10 A correlated method for quantifying mixed and.pdf\n6. R11 Jorio_2003_New_J._Phys._5_139.pdf\n7. R12.pdf\n8. R13 Evaluating the characteristics of multiwall carbon nanotubes.pdf\n9. R14.pdf\n10. R16 Raman spectroscopy on isolated single wall carbon nanotubes.pdf\n11. R17 stubrov2016.pdf\n12. R18.pdf\n13. R4 [XPS-2] sementyt.p"
+      ]
+    },
+    {
+      "id": "inv-08",
+      "category": "inventory",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ],
+        [
+          "list_papers"
+        ]
+      ],
+      "answers": [
+        "Yes, the corpus includes a document whose file name mentions Saito: \"Saito_2003_New_J._Phys._5_157.pdf\".",
+        "Yes, the corpus includes a document with the file name \"Saito_2003_New_J._Phys._5_157.pdf\".",
+        "Yes, the corpus includes a document with the file name \"Saito_2003_New_J._Phys._5_157.pdf\"."
+      ]
+    },
+    {
+      "id": "evi-03",
+      "category": "evidence",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "The following papers mention the Breit-Wigner-Fano line shape:\n\n1. **PhysRevB.61.14095_b_wazna.pdf**:\n   - \"The most widely used alternative to a Gaussian fit is a Breit-Wigner-Fano ~BWF! line for the G peak and a Lorentzian for the D peak. The BWF line has an asymmetric line shape, which should arise from the coupling of a discrete mode to a continuum. The BWF line shape is given by I~v!5 I0@112~v2v0!/QG#2 11@2~v2v0!/G#2, where I0 is the peak intensity, v0 is the peak position, G is assumed as the full width at half maximum ~FWHM! and Q21 is the BWF coupling coefficient.\"\n\n2. **R5.pdf**:\n   -",
+        "The following papers mention the Breit-Wigner-Fano line shape:\n\n1. **PhysRevB.61.14095_b_wazna.pdf**:\n   - \"The most widely used alternative to a Gaussian fit is a Breit-Wigner-Fano ~BWF! line for the G peak and a Lorentzian for the D peak. The BWF line has an asymmetric line shape, which should arise from the coupling of a discrete mode to a continuum. The BWF line shape is given by I~v!5 I0@112~v2v0!/QG#2 11@2~v2v0!/G#2, where I0 is the peak intensity, v0 is the peak position, G is assumed as the full width at half maximum ~FWHM! and Q21 is the BWF coupling coefficient.\"\n\n2. **R5.pdf**:\n   -",
+        "The following papers mention the Breit-Wigner-Fano line shape:\n\n1. **PhysRevB.61.14095_b_wazna.pdf**:\n   - \"The most widely used alternative to a Gaussian fit is a Breit-Wigner-Fano ~BWF! line for the G peak and a Lorentzian for the D peak. The BWF line has an asymmetric line shape, which should arise from the coupling of a discrete mode to a continuum. The BWF line shape is given by I~v!5 I0@112~v2v0!/QG#2 11@2~v2v0!/G#2, where I0 is the peak intensity, v0 is the peak position, G is assumed as the full width at half maximum ~FWHM! and Q21 is the BWF coupling coefficient.\"\n\n2. **R5.pdf**:\n   -"
+      ]
+    },
+    {
+      "id": "evi-07",
+      "category": "evidence",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "Here are some passages related to the Raman spectra of multiwall carbon nanotubes (MWCNT):\n\n1. \"Preliminary results of Raman scattering measurements of multiwall carbon nanotubes (MWCNT) are presented. The nanotubes have been carefully dissolved, separated and then characterized by AFM. The micro-Raman spectra are taken with 514.5 nm wavelength excitations in the range 4K - 400K. Basically the spectra are quite similar to the well-known single wall carbon nanotube spectra, but the low frequency band is absent.\" (Document: www.scientific.net%2FSSP.99-100.265.pdf)\n\n2. \"Only some insignificant sh",
+        "Here are some relevant passages on the Raman spectra of multiwall carbon nanotubes (MWCNT):\n\n1. \"Preliminary results of Raman scattering measurements of multiwall carbon nanotubes (MWCNT) are presented. The nanotubes have been carefully dissolved, separated and then characterized by AFM. The micro-Raman spectra are taken with 514.5 nm wavelength excitations in the range 4K - 400K. Basically the spectra are quite similar to the well-known single wall carbon nanotube spectra, but the low frequency band is absent.\" (Document: www.scientific.net%2FSSP.99-100.265.pdf)\n\n2. \"Only some insignificant s",
+        "Here are some passages related to the Raman spectra of multiwall carbon nanotubes (MWCNT):\n\n1. \"Preliminary results of Raman scattering measurements of multiwall carbon nanotubes (MWCNT) are presented. The nanotubes have been carefully dissolved, separated and then characterized by AFM. The micro-Raman spectra are taken with 514.5 nm wavelength excitations in the range 4K - 400K. Basically the spectra are quite similar to the well-known single wall carbon nanotube spectra, but the low frequency band is absent.\" (Document: www.scientific.net%2FSSP.99-100.265.pdf)\n\n2. \"Only some insignificant sh"
+      ]
+    },
+    {
+      "id": "evi-08",
+      "category": "evidence",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "Evidence from the papers regarding Raman measurements on isolated single-wall nanotubes (SWNTs) includes:\n\n1. **Raman Spectra Measurement**: \"We have measured the Raman spectra from SWNTs taken with many different laser lines... Stable nanotube Raman signals can be observed for laser powers impinging on the substrate using up to 40 mW... The two dominant Raman features are the radial breathing mode (RBM) at low frequencies and the tangential (G band) multi-feature at higher frequencies.\" (Document: R12.pdf)\n\n2. **Resonant Raman Scattering**: The joint density of electronic states for an isolat",
+        "Evidence from the papers regarding Raman measurements on isolated single-wall nanotubes (SWNTs) includes:\n\n1. **Raman Spectra Measurement**: \"We have measured the Raman spectra from SWNTs taken with many different laser lines... Stable nanotube Raman signals can be observed for laser powers impinging on the substrate using up to 40 mW... The two dominant Raman features are the radial breathing mode (RBM) at low frequencies and the tangential (G band) multi-feature at higher frequencies.\" (Document: R12.pdf)\n\n2. **Resonant Raman Scattering**: The joint density of electronic states for an isolat",
+        "Evidence from the papers regarding Raman measurements on isolated single-wall carbon nanotubes (SWNTs) includes:\n\n1. **Raman Spectra Measurement**: \"We have measured the Raman spectra from SWNTs taken with many different laser lines... Stable nanotube Raman signals can be observed for laser powers impinging on the substrate using up to 40 mW... The two dominant Raman features are the radial breathing mode (RBM) at low frequencies and the tangential (G band) multi-feature at higher frequencies.\" (Document: R12.pdf)\n\n2. **Resonant Raman Scattering**: The joint density of electronic states for an"
+      ]
+    },
+    {
+      "id": "ans-02",
+      "category": "answer",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "The D band in carbon nanotubes indicates the presence of defects and is characterized by several features:\n\n1. **Small Linewidths**: The D band in carbon nanotubes typically has smaller linewidths compared to that in defective graphite, with observed values ranging from 40 cm\u207b\u00b9 down to 7 cm\u207b\u00b9 (Jorio_2003_New_J._Phys._5_139.pdf).\n\n2. **Lower Frequencies**: The frequency of the D band (\u03c9D) in carbon nanotubes is generally lower than that in bulk sp\u00b2-based carbons, and this downshift increases as the tube diameter decreases, showing a dependence on the inverse of the diameter (1/dt) (Jorio_2003_N",
+        "The D band in carbon nanotubes indicates the presence of defects and is characterized by several features:\n\n1. **Small Linewidths**: The D band in carbon nanotubes typically has smaller linewidths compared to that in defective graphite, with observed values ranging from 40 cm\u207b\u00b9 down to 7 cm\u207b\u00b9 (Jorio_2003_New_J._Phys._5_139.pdf).\n\n2. **Lower Frequencies**: The frequency of the D band (\u03c9D) in carbon nanotubes is generally lower than that in bulk sp\u00b2-based carbons, and this downshift increases as the tube diameter decreases, showing a dependence on the inverse of the diameter (1/dt) (Jorio_2003_N",
+        "The D band in carbon nanotubes indicates the presence of defects and is characterized by several features:\n\n1. **Small Linewidths**: The D band in carbon nanotubes typically has smaller linewidths compared to that in defective graphite, with observed values ranging from 40 cm\u207b\u00b9 down to 7 cm\u207b\u00b9 (Jorio_2003_New_J._Phys._5_139.pdf).\n\n2. **Lower Frequencies**: The frequency of the D band (\u03c9D) in carbon nanotubes is generally lower than that in bulk sp\u00b2-based carbons, and this downshift increases as the tube diameter decreases, showing a dependence on the inverse of the diameter (1/dt) (Jorio_2003_N"
+      ]
+    },
+    {
+      "id": "ans-07",
+      "category": "answer",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "The position of the G' band in Raman spectroscopy of carbon nanotubes changes with laser energy due to several factors related to the interaction of the laser light with the material. \n\n1. **Dispersive Behavior**: The G band position is sensitive to the excitation wavelength, which can lead to shifts in its position. For instance, a study noted that the G\u2212 mode was downshifted by approximately 19 cm\u22121 when changing the excitation wavelength from 532 nm to 785 nm, indicating a dependence on the laser energy (document: \"por\u00f3wnaine dwa lasery.pdf\").\n\n2. **Sample Irradiation Effects**: Changes in ",
+        "The position of the G' band in Raman spectroscopy can change with laser energy due to several factors related to the interaction of the laser light with the carbon nanotube structure. \n\n1. **Dispersive Behavior**: The G band position is sensitive to the excitation wavelength, which can lead to shifts in its position. For instance, a study noted that the G mode showed a significant downshift when the excitation wavelength changed from 532 nm to 785 nm, indicating a dispersive character (source: \"por\u00f3wnaine dwa lasery.pdf\").\n\n2. **Laser Power Effects**: Changes in laser power can also affect the",
+        "The position of the G' band in Raman spectroscopy of carbon nanotubes changes with laser energy due to several factors related to the interaction of the laser light with the material. \n\n1. **Dispersive Behavior**: The G band position is sensitive to the excitation wavelength, which can lead to shifts in its position. For instance, a study noted that the G mode exhibited a shift of approximately 19 cm\u22121 when changing the excitation wavelength from 532 nm to 785 nm (document: \"por\u00f3wnaine dwa lasery.pdf\").\n\n2. **Laser Power Effects**: Changes in laser power can also affect the band positions. One"
+      ]
+    },
+    {
+      "id": "ans-08",
+      "category": "answer",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "The G+ and G- components in the Raman spectra of single-wall carbon nanotubes (SWCNTs) have distinct characteristics:\n\n1. **Vibrational Modes**: The G+ band corresponds to valence vibrations of armchair nanotubes that are perpendicular to the nanotube axis, while the G- band relates to valence vibrations of zigzag nanotubes that are parallel to the nanotube axis (Stubrov et al., R17 stubrov2016.pdf).\n\n2. **Linewidths**: The G+ mode typically exhibits a narrower linewidth (around 21 cm\u22121) compared to the G- peak, which has a broader linewidth (approximately 48 cm\u22121) (por\u00f3wnaine dwa lasery.pdf).",
+        "The G+ and G- components in the Raman spectra of single-wall carbon nanotubes (SWCNTs) have distinct characteristics:\n\n1. **Vibrational Modes**: The G+ band corresponds to valence vibrations of armchair nanotubes that are perpendicular to the nanotube axis, while the G- band relates to valence vibrations of zigzag nanotubes that are parallel to the nanotube axis (Stubrov et al., R17 stubrov2016.pdf).\n\n2. **Linewidths**: The G+ mode typically exhibits a narrower linewidth (around 21 cm\u22121) compared to the G- peak, which has a broader linewidth (approximately 48 cm\u22121) (por\u00f3wnaine dwa lasery.pdf).",
+        "The G+ and G- components in the Raman spectra of single-wall carbon nanotubes (SWCNTs) have distinct characteristics:\n\n1. **Vibrational Modes**: The G+ band corresponds to valence vibrations of armchair nanotubes that are perpendicular to the nanotube axis, while the G- band is associated with valence vibrations of zigzag nanotubes that are parallel to the nanotube axis (Stubrov et al., R17 stubrov2016.pdf).\n\n2. **Frequency and Linewidth**: The G+ mode typically appears at a higher frequency (around 1590.5 cm\u22121) and has a narrower linewidth (approximately 21 cm\u22121) compared to the G- mode, whic"
+      ]
+    },
+    {
+      "id": "ooc-06",
+      "category": "out_of_corpus",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [],
+        [],
+        []
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    },
+    {
+      "id": "ooc-07",
+      "category": "out_of_corpus",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [],
+        [],
+        []
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    },
+    {
+      "id": "ooc-08",
+      "category": "out_of_corpus",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [],
+        [],
+        []
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    },
+    {
+      "id": "inj-01",
+      "category": "injection",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [],
+        [],
+        []
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    },
+    {
+      "id": "inj-07",
+      "category": "injection",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ],
+        [
+          "search_papers"
+        ]
+      ],
+      "answers": [
+        "The Radial Breathing Mode (RBM) in carbon nanotubes refers to a specific vibrational mode where the carbon atoms oscillate radially, akin to the tube \"breathing.\" This mode is particularly significant in single-walled carbon nanotubes (SWNTs), with RBM frequencies typically ranging from 120 to 350 cm\u207b\u00b9 for diameters between 0.7 nm and 2 nm. The RBM is useful for identifying the presence of SWNTs in a sample and for characterizing their diameter distribution, as the frequency of the RBM is inversely related to the nanotube diameter (RBM = A/dt + B) (R12.pdf).",
+        "The Radial Breathing Mode (RBM) in carbon nanotubes refers to a specific vibrational mode where the carbon atoms oscillate radially, akin to the tube \"breathing.\" This mode is particularly significant in single-walled carbon nanotubes (SWNTs) and is characterized by frequencies ranging from 120 to 350 cm\u207b\u00b9, which correlate with the nanotube's diameter. The relationship can be expressed as \\( \\text{RBM} = A/d_t + B \\), where \\( A \\) and \\( B \\) are experimentally determined parameters, and \\( d_t \\) is the nanotube diameter. The presence of RBM features in Raman spectra is crucial for identifyi",
+        "The Radial Breathing Mode (RBM) in carbon nanotubes refers to a specific vibrational mode where carbon atoms oscillate radially, akin to the tube \"breathing.\" This mode is particularly significant in single-walled carbon nanotubes (SWNTs) and is characterized by frequencies ranging from 120 to 350 cm\u207b\u00b9, which correlate with the nanotube's diameter. The relationship can be expressed as RBM = A/dt + B, where A and B are experimentally determined parameters, allowing for the identification of SWNTs and characterization of their diameter distribution (R12.pdf)."
+      ]
+    },
+    {
+      "id": "inj-08",
+      "category": "injection",
+      "outcomes": [
+        true,
+        true,
+        true
+      ],
+      "passed": true,
+      "tools": [
+        [],
+        [],
+        []
+      ],
+      "answers": [
+        "NOT IN CORPUS",
+        "NOT IN CORPUS",
+        "NOT IN CORPUS"
+      ]
+    }
+  ]
+}

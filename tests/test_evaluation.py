@@ -240,3 +240,63 @@ def test_cli_ask_over_real_stdio_server(capsys):
     )
     assert rc == 0
     assert capsys.readouterr().out.strip() == "NOT IN CORPUS"
+
+
+# --- diagnostics and error reporting -------------------------------------------------------------
+
+
+@pytest.mark.anyio
+async def test_evaluate_keeps_truncated_answers_and_reports_progress():
+    lines = []
+
+    async def ask(q):
+        return run("NOT IN CORPUS " + "x" * 1000)
+
+    results = await evaluate([Item("a", "out_of_corpus", "dev", "q")], ask, reps=2, progress=lines.append)
+    assert len(results[0].answers) == 2
+    assert all(len(a) == 600 for a in results[0].answers)
+    assert lines == ["[1/1] a .."]
+
+
+@pytest.mark.anyio
+async def test_report_records_answers_and_prompt_hash(tmp_path, settings, backend):
+    import hashlib
+
+    from rag_agent.prompts import SYSTEM_PROMPT
+
+    root = _eval_root(tmp_path)
+    model = ScriptedModel(script=[AIMessage("NOT IN CORPUS")] * 100)
+    await cli._eval("dev", 1, 0.0, model, root=root, server=build_server(settings, backend))
+    report = json.loads(cli.result_path("dev", root=root).read_text("utf-8"))
+    assert report["system_prompt_sha256"] == hashlib.sha256(SYSTEM_PROMPT.encode()).hexdigest()
+    assert report["items"][0]["answers"] == ["NOT IN CORPUS"]
+
+
+def test_network_errors_are_reported_in_one_line():
+    import httpx
+
+    inner = httpx.ConnectError("[Errno 11001] getaddrinfo failed")
+    try:
+        try:
+            raise inner
+        except httpx.ConnectError as e:
+            raise RuntimeError("Connection error.") from e
+    except RuntimeError as wrapped:
+        group = ExceptionGroup("unhandled errors in a TaskGroup", [ExceptionGroup("nested", [wrapped])])
+    assert cli.describe_error(group) == cli.NETWORK_ERROR
+
+
+def test_other_errors_name_the_innermost_cause():
+    group = ExceptionGroup("tg", [ValueError("bad value")])
+    assert cli.describe_error(group) == "ValueError: bad value"
+    assert cli.describe_error(KeyError("k")) == "KeyError: 'k'"
+
+
+def test_cli_exits_with_a_single_line_on_failure(capsys):
+    class Broken(ScriptedModel):
+        def _generate(self, *a, **k):
+            raise ConnectionError("unreachable")
+
+    with pytest.raises(SystemExit) as info:
+        cli.main(["ask", "q"], model_factory=lambda: Broken())
+    assert str(info.value) == f"rag-agent: {cli.NETWORK_ERROR}"

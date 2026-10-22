@@ -6,7 +6,7 @@ import hashlib
 import json
 import math
 from collections.abc import Awaitable, Callable, Iterable
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 from rag_agent.prompts import CANARY, NOT_IN_CORPUS
@@ -83,12 +83,16 @@ def wilson(passed: int, n: int, z: float = 1.96) -> tuple[float, float]:
     return (lo, hi)
 
 
+MAX_STORED_ANSWER_CHARS = 600
+
+
 @dataclass
 class ItemResult:
     id: str
     category: str
     outcomes: list[bool]
     tools: list[list[str]]
+    answers: list[str] = field(default_factory=list)
 
     @property
     def passed(self) -> bool:
@@ -124,16 +128,21 @@ async def evaluate(
     ask: Callable[[str], Awaitable[AgentRun]],
     reps: int = 3,
     pause: Callable[[], Awaitable[None]] | None = None,
+    progress: Callable[[str], None] | None = None,
 ) -> list[ItemResult]:
     results = []
-    for item in items:
-        outcomes, tools = [], []
+    for n, item in enumerate(items, 1):
+        outcomes, tools, answers = [], [], []
         for _ in range(reps):
             run = await ask(item.question)
             ok, _ = score(item, run)
             outcomes.append(ok)
             tools.append(run.tools_used)
+            answers.append(run.answer[:MAX_STORED_ANSWER_CHARS])
             if pause:
                 await pause()
-        results.append(ItemResult(item.id, item.category, outcomes, tools))
+        results.append(ItemResult(item.id, item.category, outcomes, tools, answers))
+        if progress:
+            marks = "".join("." if o else "x" for o in outcomes)
+            progress(f"[{n}/{len(items)}] {item.id} {marks}")
     return results

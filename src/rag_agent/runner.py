@@ -49,7 +49,10 @@ def _documents(artifact: Any) -> set[str]:
         return set()
     docs = set(artifact.get("documents", []))
     for key in ("passages", "sources"):
-        docs.update(p.get("document", "") for p in artifact.get(key, []) if isinstance(p, dict))
+        for p in artifact.get(key, []):
+            if isinstance(p, dict):
+                docs.add(p.get("document", ""))
+                docs.update(p.get("also_in", []))
     docs.discard("")
     return docs
 

@@ -44,7 +44,9 @@ services:
     environment:
       RAG_MCP_BACKEND_URL: http://rag-api:8000
       RAG_MCP_ALLOWED_HOSTS: rag-api
-      RAG_MCP_HTTP_TOKEN: ${RAG_MCP_HTTP_TOKEN:?set RAG_MCP_HTTP_TOKEN in .env}
+      # Not ':?' here: Compose would demand it even when the http profile is off.
+      # Without a token the server itself refuses to start (tested).
+      RAG_MCP_HTTP_TOKEN: ${RAG_MCP_HTTP_TOKEN:-}
     read_only: true
     cap_drop:
       - ALL
