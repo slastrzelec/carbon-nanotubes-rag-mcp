@@ -6,8 +6,11 @@
 #
 # The port is published on 127.0.0.1 only (the RAG repo's own compose file binds all interfaces).
 #
-#   docker compose -f docker-compose.backend.yml up --build
+#   docker compose -f docker-compose.backend.yml up --build                 # RAG API only
+#   docker compose -f docker-compose.backend.yml --profile http up --build  # + MCP server over HTTP
 #   docker compose -f docker-compose.backend.yml down
+#
+# The http profile also needs RAG_MCP_HTTP_TOKEN (>= 32 random characters) in .env.
 
 services:
   rag-api:
@@ -29,3 +32,22 @@ services:
       timeout: 5s
       retries: 20
       start_period: 60s
+
+  mcp-http:
+    profiles: ["http"]
+    build: .
+    depends_on:
+      rag-api:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8765:8765"
+    environment:
+      RAG_MCP_BACKEND_URL: http://rag-api:8000
+      RAG_MCP_ALLOWED_HOSTS: rag-api
+      RAG_MCP_HTTP_TOKEN: ${RAG_MCP_HTTP_TOKEN:?set RAG_MCP_HTTP_TOKEN in .env}
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 256m

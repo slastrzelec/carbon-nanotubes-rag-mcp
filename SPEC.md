@@ -1,6 +1,6 @@
 # SPEC: carbon-nanotubes-rag-mcp — MCP server for the Carbon Nanotubes RAG + LangGraph client agent
 
-Status: v0.2 APPROVED (2026-10-22). D5 accepted (option a) and merged in the RAG repo. M2 implemented.
+Status: v0.2 APPROVED (2026-10-22). D5 accepted (option a) and merged in the RAG repo. M2 and M3 implemented.
 Changes from v0.1: backend contract verified against `carbon-nanotubes-rag@f9b04be` (section 10); decisions D1-D4 accepted; new decision D5 (retrieval-only endpoint); error mapping, rate-budget alignment, deduplication and evaluation-leakage rules added.
 
 ## 1. Goal
@@ -110,6 +110,7 @@ D5 (if accepted) adds about 1 h in the RAG repo before M2.
 - The SDK ignores undeclared tool arguments (they never reach the tool function); the published input schemas do not set `additionalProperties: false`. A test asserts that extra `url`/`base_url` arguments cannot change the backend host.
 - The SDK prefixes tool error text with `Error executing tool <name>: `.
 - The HTTP client ignores proxy environment variables and does not follow redirects.
+- HTTP transport (M3): `streamable_http_app` wrapped in an ASGI bearer-token middleware (constant-time comparison, 401 before any MCP handling); the SDK's DNS-rebinding protection is set explicitly so it also applies when the container binds 0.0.0.0. Default port 8765 (8000 is the RAG API). The CLI exits with a one-line error on unsafe configuration.
 
 ## 10. Backend contract (verified against carbon-nanotubes-rag@f9b04be, `api.py`)
 

@@ -77,6 +77,24 @@ MUTANTS = [
         "    stripped = text\n    if False:",
         "whitespace-only input accepted",
     ),
+    (
+        "src/rag_mcp/http_transport.py",
+        "if not hmac.compare_digest(provided, self._expected):",
+        'if not provided.startswith(b"Bearer "):',
+        "any bearer token accepted",
+    ),
+    (
+        "src/rag_mcp/http_transport.py",
+        "enable_dns_rebinding_protection=True",
+        "enable_dns_rebinding_protection=False",
+        "DNS-rebinding protection disabled",
+    ),
+    (
+        "src/rag_mcp/http_transport.py",
+        "if len(self.token) < MIN_TOKEN_CHARS:",
+        "if False:",
+        "weak HTTP token accepted",
+    ),
 ]
 
 

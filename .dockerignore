@@ -1,0 +1,15 @@
+.git
+.github
+.env
+.env.*
+_to_delete
+tests
+scripts
+**/__pycache__
+*.egg-info
+.venv
+venv
+.pytest_cache
+.ruff_cache
+.hypothesis
+.coverage

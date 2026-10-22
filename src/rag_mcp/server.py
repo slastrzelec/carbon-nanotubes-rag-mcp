@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
+import argparse
 import json
+import os
+import sys
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from typing import Annotated
@@ -16,7 +19,7 @@ from rag_mcp import __version__
 from rag_mcp.audit import audited, configure_logging
 from rag_mcp.backend import BackendError, RagBackend
 from rag_mcp.budget import Budget
-from rag_mcp.config import BACKEND_MAX_SEARCH_TOP_K, BACKEND_MAX_TEXT_CHARS, Settings
+from rag_mcp.config import BACKEND_MAX_SEARCH_TOP_K, BACKEND_MAX_TEXT_CHARS, ConfigError, Settings
 from rag_mcp.formatting import UNTRUSTED_NOTICE, dedupe, neutralize, render_answer, render_passages
 from rag_mcp.models import AskResult, PaperList, SearchResult
 
@@ -185,9 +188,28 @@ def build_server(settings: Settings, backend: RagBackend | None = None) -> MCPSe
     return server
 
 
-def main() -> None:
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(prog="rag-mcp", description=SERVER_INSTRUCTIONS)
+    parser.add_argument("--transport", choices=["stdio", "http"], default="stdio")
+    args = parser.parse_args(argv)
     configure_logging()
-    build_server(Settings.from_env()).run("stdio")
+    # Imported lazily: the stdio path does not need the HTTP stack.
+    from rag_mcp.http_transport import HttpSettings, build_http_app
+
+    try:
+        settings = Settings.from_env()
+        http = HttpSettings.from_env(os.environ) if args.transport == "http" else None
+    except ConfigError as exc:
+        sys.exit(f"rag-mcp: configuration error: {exc}")
+    if http is None:
+        build_server(settings).run("stdio")
+        return
+    import uvicorn
+
+    app = build_http_app(build_server(settings), http)
+    uvicorn.run(
+        app, host=http.host, port=http.port, access_log=False, server_header=False, log_level="warning"
+    )
 
 
 if __name__ == "__main__":
