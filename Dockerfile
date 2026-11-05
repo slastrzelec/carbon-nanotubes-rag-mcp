@@ -3,7 +3,7 @@
 #   docker run --rm -p 127.0.0.1:8765:8765 -e RAG_MCP_HTTP_TOKEN=... \
 #     -e RAG_MCP_BACKEND_URL=http://host.docker.internal:8000 -e RAG_MCP_ALLOWED_HOSTS=host.docker.internal \
 #     carbon-nanotubes-rag-mcp
-FROM python:3.12-slim
+FROM python:3.15-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
